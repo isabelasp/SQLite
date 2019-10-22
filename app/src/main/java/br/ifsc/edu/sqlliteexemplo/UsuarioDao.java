@@ -15,13 +15,14 @@ public class UsuarioDao {
     public UsuarioDao(Context c) {
         mContext = c;
         sqLiteDataBase = c.openOrCreateDatabase("IsabelaDB", c.MODE_PRIVATE, null);
-        sqLiteDataBase.execSQL("CREATE TABLE IF NOT EXISTS usuario(id inteiger PRIMARY KEY AUTOINCREMENT, "+
+        sqLiteDataBase.execSQL("CREATE TABLE IF NOT EXISTS usuario(id INTEGER PRIMARY KEY AUTOINCREMENT, "+
                 "nome VARCHAR);");
     }
 
     public void inserir(Usuario u){
         ContentValues contentValues = new ContentValues();
         contentValues.put("nome", u.nome);
+        sqLiteDataBase.insert("usuario", null,contentValues);
     }
 
     public ArrayList<Usuario> listaUsuarios(){
