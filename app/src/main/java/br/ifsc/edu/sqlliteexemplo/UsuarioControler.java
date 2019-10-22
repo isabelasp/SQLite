@@ -20,13 +20,21 @@ public class UsuarioControler {
     }
 
     public ArrayList<Usuario> listaUsuarios(){
+        ArrayList<Usuario> usuarioArreyList = new ArrayList<Usuario>();
         Iterator<Usuario> it = usuarioDao.listaUsuarios().iterator();
         while (it.hasNext()){
             Usuario u = it.next();
-            //Log.d("Usuario", )
+            usuarioArreyList.add(u);
+
         }
+        return usuarioArreyList;
+     }
 
-
-        return null;
+    public ArrayList<String> getListaNomeUsuario(){
+        ArrayList<String> listaNomeUsuario = new ArrayList<String>();
+        for(Usuario u : this.listaUsuarios()){
+            listaNomeUsuario.add(u.getNome());
+        }
+       return listaNomeUsuario;
     }
 }
